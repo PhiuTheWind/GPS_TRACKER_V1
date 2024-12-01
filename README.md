@@ -1,6 +1,6 @@
 **Dự án GPS_TRACKER_V1**
-**Tổng quan dự án:
-**
+
+**Tổng quan dự án:**
 GPS_TRACKER_V1 là một giải pháp ứng dụng theo dõi vị trí GPS, được thiết kế đặc biệt cho Sawaco (Tổng Công ty Cấp nước Sài Gòn). Mục tiêu chính của dự án là giám sát và quản lý vị trí của các phương tiện hoặc nhân viên trong thời gian thực, hỗ trợ Sawaco trong việc cải thiện hiệu quả quản lý, tối ưu hóa chi phí vận hành, và tăng cường mức độ an toàn cho tài sản cũng như nhân viên.
 
 Ứng dụng được phát triển dựa trên nền tảng phần cứng STM32 và tích hợp các mô-đun GPS hiện đại để đảm bảo độ chính xác cao, cùng với các giao thức truyền thông mạnh mẽ để kết nối dữ liệu nhanh chóng và ổn định.
