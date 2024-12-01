@@ -1,74 +1,60 @@
-# **Dự án GPS_TRACKER_V1**
+# GPS_TRACKER_V1
 
-**Tổng quan dự án:**
+## Mô tả dự án
 
-GPS_TRACKER_V1 là một giải pháp ứng dụng theo dõi vị trí GPS, được thiết kế đặc biệt cho Sawaco (Tổng Công ty Cấp nước Sài Gòn). Mục tiêu chính của dự án là giám sát và quản lý vị trí của các phương tiện hoặc nhân viên trong thời gian thực, hỗ trợ Sawaco trong việc cải thiện hiệu quả quản lý, tối ưu hóa chi phí vận hành, và tăng cường mức độ an toàn cho tài sản cũng như nhân viên.
+**GPS_TRACKER_V1** là một giải pháp theo dõi vị trí GPS, được thiết kế để giám sát và quản lý phương tiện hoặc nhân viên trong thời gian thực. Dự án được xây dựng nhằm hỗ trợ Sawaco cải thiện hiệu quả quản lý, giảm chi phí vận hành và tăng cường mức độ an toàn. 
 
-Ứng dụng được phát triển dựa trên nền tảng phần cứng STM32 và tích hợp các mô-đun GPS hiện đại để đảm bảo độ chính xác cao, cùng với các giao thức truyền thông mạnh mẽ để kết nối dữ liệu nhanh chóng và ổn định.
+Dự án được phát triển trên nền tảng **STM32** với môi trường lập trình **KeilC**, tích hợp các mô-đun GPS và GSM để đảm bảo thu thập dữ liệu chính xác và truyền thông tin hiệu quả.
 
-**Phần cứng:**
+---
 
-**Vi điều khiển STM32:**
+## Tính năng chính
 
-Sử dụng dòng STM32F4xx với hiệu suất cao, hỗ trợ nhiều giao thức giao tiếp như UART, I2C, và SPI.
-Vi điều khiển đóng vai trò xử lý dữ liệu từ mô-đun GPS và giao tiếp với các thành phần khác như mạng di động hoặc bộ nhớ.
-**Mô-đun GPS:**
+- **Theo dõi vị trí thời gian thực:** Cập nhật và hiển thị vị trí chính xác trên bản đồ.
+- **Lịch sử hành trình:** Ghi lại lộ trình di chuyển, hỗ trợ kiểm tra và phân tích.
+- **Cảnh báo thông minh:** Phát hiện hành vi bất thường hoặc ra khỏi khu vực an toàn.
+- **Quản lý đa thiết bị:** Tích hợp giao diện quản lý nhiều phương tiện/nhân viên.
+- **Bảo mật cao:** Sử dụng mã hóa để đảm bảo an toàn thông tin.
 
-Tích hợp mô-đun GPS Neo-6M hoặc tương đương để thu thập tọa độ vị trí với độ chính xác cao.
-GPS Tracker có thể định kỳ gửi dữ liệu vị trí theo thời gian thực về hệ thống giám sát.
-**Mô-đun GSM/4G (tùy chọn):
-**
-Sử dụng SIM800 hoặc SIM7600 để truyền dữ liệu vị trí GPS đến máy chủ qua kết nối mạng di động.
-Đảm bảo khả năng theo dõi từ xa ngay cả khi thiết bị di chuyển liên tục.
-Bộ cảm biến:
+---
 
-Tích hợp thêm cảm biến gia tốc (như MPU6050) để phát hiện các hành vi bất thường như rung lắc mạnh hoặc thay đổi góc độ, hỗ trợ phát hiện va chạm hoặc rủi ro.
-**Nguồn năng lượng:**
+## Phần cứng
 
-Sử dụng pin lithium-ion có khả năng sạc lại, đảm bảo thời gian hoạt động liên tục. Kết hợp bộ quản lý nguồn để tối ưu hiệu suất.
-**Phần mềm:**
+1. **Vi điều khiển STM32:**
+   - Sử dụng STM32F103 hoặc STM32F4xx với hiệu suất cao và đa giao thức giao tiếp.
+2. **Mô-đun GPS:**
+   - Neo-6M hoặc tương đương để thu thập tọa độ chính xác.
+3. **Mô-đun GSM/4G:**
+   - SIM800 hoặc SIM7600 để truyền dữ liệu qua mạng di động.
+4. **Cảm biến gia tốc (tùy chọn):**
+   - MPU6050 để phát hiện rung lắc hoặc va chạm.
+5. **Nguồn năng lượng:**
+   - Pin lithium-ion hoặc nguồn DC ổn định.
 
-**Lập trình firmware:**
+---
 
-Sử dụng ngôn ngữ C/C++ trên môi trường STM32CubeIDE để phát triển firmware.
-Xử lý luồng dữ liệu từ mô-đun GPS và giao tiếp với mô-đun GSM thông qua UART.
-Tích hợp FreeRTOS để quản lý tác vụ đa luồng, giúp hệ thống hoạt động ổn định.
-**Truyền thông:**
+## Phần mềm
 
-Dữ liệu GPS được truyền qua giao thức MQTT hoặc HTTP đến máy chủ trung tâm.
-Mã hóa dữ liệu bằng TLS/SSL để bảo mật thông tin.
-**Ứng dụng giám sát:**
+- **Môi trường lập trình:** KeilC với trình biên dịch ARMCC.
+- **Hệ điều hành:** Tích hợp FreeRTOS (nếu cần đa luồng).
+- **Giao thức truyền thông:** Giao tiếp qua UART với mô-đun GPS và GSM, sử dụng giao thức HTTP hoặc MQTT.
+- **Mã hóa:** TLS/SSL để bảo mật thông tin.
+- **Backend:** Máy chủ sử dụng Node.js hoặc Flask/Django để lưu trữ và xử lý dữ liệu.
+- **Frontend:** Dashboard hiển thị trên web với bản đồ và các thông số hành trình.
 
-Hệ thống backend: Xây dựng bằng Node.js hoặc Python (Flask/Django) để lưu trữ và xử lý dữ liệu.
-Giao diện người dùng: Một dashboard trên web hiển thị vị trí thời gian thực, lịch sử hành trình, và cảnh báo.
-**Tính năng chính:**
+---
 
-**Theo dõi thời gian thực:**
+## Cách triển khai
 
-Hiển thị vị trí chính xác của các phương tiện hoặc nhân viên trên bản đồ.
-**Lịch sử hành trình:**
+### Phần cứng
 
-Lưu trữ và hiển thị lịch sử di chuyển để phục vụ phân tích và kiểm tra.
-**Cảnh báo thông minh:**
+1. Kết nối các thành phần:
+   - Mô-đun GPS và GSM qua giao tiếp UART với STM32.
+   - Cảm biến MPU6050 qua giao thức I2C.
+2. Cấp nguồn cho hệ thống bằng pin lithium-ion hoặc nguồn DC.
 
-Phát hiện các hành vi bất thường hoặc khu vực cấm.
-Gửi thông báo qua email/SMS khi thiết bị ra khỏi vùng cho phép.
-**Quản lý đội xe/nhân viên:
-**
-Quản lý nhiều thiết bị cùng lúc qua một giao diện trực quan.
-**Lợi ích của GPS_TRACKER_V1:
-**
-**Tăng hiệu quả quản lý:**
+### Phần mềm
 
-Cung cấp dữ liệu theo thời gian thực, giúp cải thiện việc phân bổ tài nguyên và quản lý lộ trình.
-**Giảm chi phí vận hành:**
-
-Theo dõi hoạt động để phát hiện và loại bỏ các lộ trình không hiệu quả.
-**Đảm bảo an toàn:**
-
-Giám sát trạng thái các phương tiện và phát hiện các rủi ro kịp thời.
-**Mở rộng và phát triển:**
-
-Hỗ trợ thêm các công nghệ IoT như NB-IoT hoặc LoRa để tối ưu hóa chi phí truyền dữ liệu trong khu vực rộng lớn.
-Tích hợp công nghệ AI để phân tích dữ liệu hành trình, dự đoán sự cố, và tối ưu hóa hoạt động.
-Dự án GPS_TRACKER_V1 là một bước tiến quan trọng trong việc hiện đại hóa hoạt động quản lý của Sawaco, đồng thời mở ra nhiều cơ hội áp dụng công nghệ tiên tiến vào các lĩnh vực khác nhau.
+1. Clone repository:
+   ```bash
+   git clone https://github.com/username/GPS_TRACKER_V1.git
